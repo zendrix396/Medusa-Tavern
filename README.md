@@ -16,5 +16,6 @@ It is basically an interactive, dynamic and better wattpad (or erotica 😼) for
 ### Tech Stack: fastapi, nextjs, shadcn wtih gsap, prisma, postgresql, vector embeddings, finetuned open source llm/gemini-flash-2.5 (jailbreaked for nsfw)
 
 ## Todo
-* setting up postgresql database along with prisma using fastapi
-* setting up a basic chat interface => user has option to setup local db to store personal chats or on the postgresql database.
+* setting up postgresql database along with prisma using fastapi [🏗️]
+* setting up a basic chat interface => user has option to setup local db to store personal chats or on the server postgresql database. [🏗️]
+* GraphQL with fastapi to stream model's output data => finishing up with simple chat interface [🏗️]
