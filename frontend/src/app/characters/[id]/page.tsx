@@ -1,13 +1,16 @@
 "use client";
 
 import React, { useEffect, useState, useCallback } from "react";
+import Link from "next/link";
 import ChatInput from "./ChatInput";
 
 const parseResponse = (text: string) => {
     if (!text) return { __html: "" };
     // make the text inside the * bold
-    const boldedText = text.replace(/\*(.*?)\*/g, "<i>$1</i>");
-    return { __html: boldedText };
+    const italicText = text.replace(/\*(.*?)\*/g, "<i>$1</i>");
+    // make the text inside "" bold
+    const boldText = italicText.replace(/\"(.*?)\"/g, '"<b><i>$1</i></b>"');    
+    return { __html: boldText };
 }
 
 export default function Page({ params }: { params: { id: string } }) {
@@ -35,9 +38,23 @@ export default function Page({ params }: { params: { id: string } }) {
 
   return (
     <div 
-      className="min-h-screen bg-cover bg-center bg-no-repeat flex justify-center"
+      className="min-h-screen bg-cover bg-center bg-no-repeat flex justify-center relative"
       style={{ backgroundImage: 'url(/bg.png)' }}
     >
+      {/* Back Arrow */}
+      <Link 
+        href="/characters"
+        className="fixed top-4 left-10 z-50 bg-pink-400/70 backdrop-blur-md rounded-full p-3 shadow-lg hover:bg-pink-400/80 transition-all duration-200 border border-white/20"
+      >
+        <svg 
+          className="w-6 h-6 text-gray-700" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+      </Link>
       <div className="w-full max-w-4xl h-[85vh] overflow-y-auto p-4 custom-scrollbar">
         {chats &&
           chats.map((msg: { user: string; system: string }, index: number) => (
