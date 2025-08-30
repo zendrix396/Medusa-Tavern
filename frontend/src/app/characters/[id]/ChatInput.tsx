@@ -1,21 +1,23 @@
 'use client'
 
-import React, { useState } from "react"
-import chatData from "@/app/characters/ChatHistory";
-interface ChatInputProps {
-    characterName: string
-}
+import React from "react"
 
-export default function ChatInput({characterName}: ChatInputProps){
-    const handleSubmit = (e: any) => {
+// make the hash either null or string
+export default function ChatInput({hash, characterName, onMessageSend}: {hash: string | null, characterName: string | null, onMessageSend: () => void}){
+    
+    // @ts-expect-error ignore this error
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const msg = e.target[0].value;
-        if (msg.trim()){
-            console.log(msg);
-            // here i want to push chat where index is a hashed string of the address of that particular chat, use hashing, first check if local storage has that hash if yes then just add chat to it if no then create hash and set local storage, instead of characterName use that hash, you create hash by firrst getting a random number than creating it into a base64 string not using btoa on charactername
-            chatData[characterName] = [...msg]
-            e.target[0].value = "";
-        }
+       await fetch(`http://localhost:8000/chat/update`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({hash: hash, message: msg}),
+    })
+        e.target[0].value = "";
+        onMessageSend();
     }
      return <div>
          <form onSubmit={handleSubmit} className="flex justify-center">

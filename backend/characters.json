@@ -1,17 +1,4 @@
-interface Character {
-    name: string;
-    personality: string[];
-    gender: string;
-    context: string;
-    tags: string[];
-}
-
-interface CharacterInfo{
-    [key: string]: Character;
-}
-
-
-const characterInfo = {
+{
     "1": {
         "name": "Sakura",
         "gender": "f",
@@ -83,4 +70,3 @@ const characterInfo = {
         "tags": ["male", "ex-military", "scarred", "secretly enjoys cooking", "has a soft spot for animals"]
     }
 }
-export const data: CharacterInfo = characterInfo;
