@@ -15,6 +15,32 @@ It is basically an interactive, dynamic and better wattpad (or erotica 😼) for
 
 ### Tech Stack: fastapi, nextjs, shadcn wtih gsap, prisma, postgresql, vector embeddings, finetuned open source llm/gemini-flash-2.5 (jailbreaked for nsfw)
 
+### Setup and Run locally
+```bash
+git clone https://github.com/zendrix396/medusa-tavern
+cd medusa-tavern
+```
+* Install the `backend/` dependencies
+    ```bash
+    pip install -r backend/requirements.txt
+    ```
+* Now fetch your **Gemini API Key** from [Google AI Studio](https://aistudio.google.com/apikey).
+* Setup your environment variable with the name `GEMINI_API_KEY`
+* **Windows Powershell**: 
+    ```powershell
+    $env:GEMINI_API_KEY="your_api_key"`
+    ```
+* **Linux/Mac**:
+    ```bash
+    export GEMINI_API_KEY="your_api_key"
+    ```
+* Install requirements and run the `frontend`
+    ```bash
+    cd frontend/
+    npm i
+    npm run dev
+    ```
+
 ## Todo
 * setting up local json database using fastapi [✅]
 * setting up a basic chat interface. [✅]
