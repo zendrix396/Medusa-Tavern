@@ -1,6 +1,6 @@
 # Medusa Tavern
 It is basically an interactive, dynamic and better wattpad (or erotica 😼) for you to immerse fully and enjoy any niche plot of your liking.
-## Features
+## Features (WIP)
 ### For Creators
 * Create your own characters, with specific personalities and background.
 * Control the narrative of your character with a **specific plot** that AI roleplay is going to take.
